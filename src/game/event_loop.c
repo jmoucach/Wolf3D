@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 17:48:43 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/10 16:33:50 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/10 19:00:21 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void game_loop(t_data *data)
 						data->player.screen_pos.y += data->box_length * data->player.dir.y;
 					}
 				}
-
 				if (data->event.key.keysym.sym == SDLK_DOWN)
 				{
 					if (data->map[(int)(data->player.pos.y - data->player.dir.y)][(int)(data->player.pos.x - data->player.dir.x)].value == 0)
@@ -51,40 +50,42 @@ void game_loop(t_data *data)
 						data->player.screen_pos.y -= data->box_length * data->player.dir.y;
 					}
 				}
-
-				// if (data->event.key.keysym.sym == SDLK_RIGHT)
-				// {
-				// 	if (data->map[(int)(data->player.pos.y + data->player.dir.y)][(int)(data->player.pos.x + data->player.dir.y)].value == 0)
-				// 	{
-				// 		data->player.pos.x += 1;
-				// 		data->player.screen_pos.x += data->box_length * data->player.dir.y;
-				// 		data->player.screen_pos.y += data->box_length * data->player.dir.x;
-				// 	}
-				// }
-
-				// if (data->event.key.keysym.sym == SDLK_LEFT)
-				// {
-				// 	if (data->map[(int)(data->player.pos.y - data->player.dir.x)][(int)(data->player.pos.x - data->player.dir.y)].value == 0)
-				// 	{
-				// 		data->player.pos.x -= 1;
-				// 	}
-				// }
 				if (data->event.key.keysym.sym == SDLK_a)// rotate to the left with 'A' key
 				{
-					data->player.angle -= 5* M_PI / 180;
-					if (data->player.angle < 0)
-						data->player.angle = M_PI * 2 - M_PI/180;
-					data->player.dir.x = cos(-data->player.angle);
-					data->player.dir.y = sin(-data->player.angle);
+					data->player.angle -= 2* M_PI / 180;
+					if (data->player.angle < -M_PI)
+						data->player.angle = M_PI;
+					data->player.dir.x = cos(data->player.angle);
+					data->player.dir.y = sin(data->player.angle);
+					printf("angle:%f\n", data->player.angle* 180 / M_PI);
 					printf("dir X:%f, Y:%f\n", data->player.dir.x, data->player.dir.y);
 				}
 				if (data->event.key.keysym.sym == SDLK_d) // rotate to the left with 'A' key
 				{
-					data->player.angle +=  5* M_PI / 180;
-					if (data->player.angle > M_PI * 2 - M_PI/180)
-						data->player.angle = 0;
+					data->player.angle +=  2* M_PI / 180;
+					if (data->player.angle > M_PI)
+						data->player.angle = -M_PI;
 					data->player.dir.x = cos(data->player.angle);
 					data->player.dir.y = sin(data->player.angle);
+					printf("angle:%f\n", data->player.angle* 180 / M_PI);
+					printf("dir X:%f, Y:%f\n", data->player.dir.x, data->player.dir.y);
+				}if (data->event.key.keysym.sym == SDLK_q) // rotate to the left with 'A' key
+				{
+					data->player.angle -=  M_PI_2;
+					if (data->player.angle < -M_PI)
+						data->player.angle = M_PI;
+					data->player.dir.x = cos(data->player.angle);
+					data->player.dir.y = sin(data->player.angle);
+					printf("angle:%f\n", data->player.angle* 180 / M_PI);
+					printf("dir X:%f, Y:%f\n", data->player.dir.x, data->player.dir.y);
+				}if (data->event.key.keysym.sym == SDLK_e) // rotate to the left with 'A' key
+				{
+					data->player.angle +=  M_PI_2;
+					if (data->player.angle > M_PI)
+						data->player.angle = -M_PI;
+					data->player.dir.x = cos(data->player.angle);
+					data->player.dir.y = sin(data->player.angle);
+					printf("angle:%f\n", data->player.angle * 180 / M_PI);
 					printf("dir X:%f, Y:%f\n", data->player.dir.x, data->player.dir.y);
 				}
 			}
