@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:19:39 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/10 19:30:06 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/14 16:01:56 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef struct s_line_param
 	int off;
 } t_line_param;
 
+typedef struct s_ray
+{
+	t_point pos;
+	t_d_point dir;
+}				t_ray;
+
 typedef struct s_player
 {
 	double angle;
@@ -57,6 +63,13 @@ typedef struct s_edge
 	t_point start;
 	t_point end;
 } t_edge;
+
+typedef struct s_edge_list
+{
+	int id;
+	t_edge edge;
+	struct s_edge_list *next;
+}	t_edge_list;
 
 typedef struct s_data
 {

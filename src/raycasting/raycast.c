@@ -6,113 +6,88 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 18:19:42 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/09 13:20:30 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/14 20:11:14 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/Wolf3d.h"
 
-// void cast_ray(t_data *data)
-// {
-// 	int x;
-// 	t_player player;
-// 	int color;
-
-// 	player = data->player;
-// 	x = 0;
-// 	int side;
-// 	while (x < SCREEN_WIDTH)
-// 	{
-// 		double cameraX = 2 * x / SCREEN_WIDTH - 1;
-// 		t_d_point rayPos = {player.pos.x, player.pos.y};
-// 		t_d_point rayDir = {player.dir.x + player.plane.x * cameraX, player.dir.y + player.plane.y * cameraX};
-// 		t_point mapc = {(int)rayPos.x, (int)rayPos.y};
-// 		t_d_point sideDist;
-// 		t_d_point deltaDist = {sqrt(1 + (rayDir.y * rayDir.y) / (rayDir.x * rayDir.x)), sqrt(1 + (rayDir.x * rayDir.x) / (rayDir.y * rayDir.y))};
-// 		double perpWallDist;
-// 		t_point step;
-// 		int hit = 0;
-
-// 		if (rayDir.x < 0)
-// 		{
-// 			step.x = -1;
-// 			sideDist.x = (rayPos.x - mapc.x) * deltaDist.x;
-// 		}
-// 		else
-// 		{
-// 			step.x = 1;
-// 			sideDist.x = (mapc.x + 1.0 - rayPos.x) * deltaDist.x;
-// 		}
-
-// 		if (rayDir.y < 0)
-// 		{
-// 			step.y = -1;
-// 			sideDist.y = (rayPos.y - mapc.y) * deltaDist.y;
-// 		}
-// 		else
-// 		{
-// 			step.y = 1;
-// 			sideDist.y = (mapc.y + 1.0 - rayPos.y) * deltaDist.y;
-// 		}
-
-// 		// check if the casted ray has hit an object
-// 		while (hit == 0) // calculate ray until it hits an object
-// 		{
-// 			if (sideDist.x < sideDist.y)
-// 			{
-// 				sideDist.x += deltaDist.x;
-// 				mapc.x += step.x;
-// 				side = 0;
-// 			}
-// 			else
-// 			{
-// 				sideDist.y += deltaDist.y;
-// 				mapc.y += step.y;
-// 				side = 1;
-// 			}
-
-// 			if (data->map[mapc.x][mapc.y].value > 0) // the ray has hit a non-zero block at position mapc.x, mapc.y
-// 			{
-// 				hit = 1;
-// 			}
-// 		}
-// 		// if (side == 0)
-// 		// {
-// 		// 	// perpWallDist = fabs((mapc.x - rayPos.x + (1 - step.x) / 2) / rayDir.x);
-// 		// }
-// 		// else
-// 		// {
-// 		// 	perpWallDist = fabs((mapc.y - rayPos.y + (1 - step.y) / 2) / rayDir.y);
-// 		// }
-// 		perpWallDist = sqrt((mapc.x - rayPos.x) * (mapc.x - rayPos.x) + (mapc.y - rayPos.y) * (mapc.y - rayPos.y)) * cos(sqrt((mapc.x - rayPos.x) * (mapc.x - rayPos.x) + (mapc.y - rayPos.y) * (mapc.y - rayPos.y))/sqrt(player.dir.x * player.dir.x + player.dir.y * player.dir.y));
-// 		int lineHeight = ft_abs((int)SCREEN_HEIGHT / perpWallDist); // height
-
-// 		int drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;	 // y1
-// 		if (drawStart < 0)
-// 			drawStart = 0;
-// 		int drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2; // y2
-// 		if (drawEnd >= SCREEN_HEIGHT)
-// 			drawEnd = SCREEN_HEIGHT - 1;
-// 		if (data->map[mapc.x][mapc.y].value == 1)
-// 			color = 0xff;
-// 		else if (data->map[mapc.x][mapc.y].value == 2)
-// 			color = 0xffff;
-// 		else
-// 			color = 0x00ffff;
-		
-// 	if (side == 1)
-// 		color /= 2;
-// 	drawline((t_point){x, drawStart}, (t_point){x, drawEnd}, data, color);
-// 	drawline((t_point){x, drawEnd}, (t_point){x, SCREEN_HEIGHT}, data, 0x00ff00);
-// 	drawline((t_point){x, 0}, (t_point){x, drawStart}, data, 0xff0000);
-
-// 		x++;
-// 	}
-// 	return;
-// }
-
-void cast_ray(t_data *data)
+t_point cast_ray_to_edge(t_ray ray, t_edge edge)
 {
-	(void)data;
+	double div;
+	double t;
+	double u;
+	t_point pt;
+
+	double x1 = edge.start.x;
+	double y1 = edge.start.y;
+	double x2 = edge.end.x;
+	double y2 = edge.end.y;
+
+	double x3 = ray.pos.x;
+	double y3 = ray.pos.y;
+	double x4 = ray.pos.x + ray.dir.x;
+	double y4 = ray.pos.y + ray.dir.y;
+	div = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+	if (div == 0)
+		return ((t_point){-1, -1});
+	else
+	{
+		t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / div;
+		u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / div;
+		if (t > 0 && t < 1 && u > 0)
+		{
+		// 	printf("dir:X:%f, Y:%f\n", ray.dir.x, ray.dir.y);
+		// printf("T:%f, U:%f\n", t, u);
+			pt.x = x3 - u * (x3 - x4);
+			pt.y = y3 - u * (y3 - y4);
+			return (pt);
+		}
+		else
+			return ((t_point){-1, -1});
+	}
 }
 
+void raycast(t_data *data)
+{
+	double fov;
+	t_point pt;
+	t_ray ray;
+	int i;
+	double record;
+	t_point closest;
+	double d;
+	double fov_precision;
+	int *scene;
+
+	fov_precision = 0.5;
+	fov = -data->player.fov/2;
+	if (!(scene = (int *)malloc(sizeof(int) * (data->player.fov / fov_precision))))
+		return ;
+	while (fov <= data->player.fov/2)
+	{
+	record = INFINITY;
+		i = 0;
+		ray.pos.x = data->player.screen_pos.x;
+		ray.pos.y = data->player.screen_pos.y;
+		ray.dir.x = cos(data->player.angle + fov * M_PI / 180);
+		ray.dir.y = sin(data->player.angle + fov * M_PI / 180);
+		while (i < data->edge_nb)
+		{
+			pt = cast_ray_to_edge(ray, data->edges[i]);
+			if (pt.x != -1 && pt.y != -1)
+			{
+				d = sqrt((pt.x - ray.pos.x) * (pt.x - ray.pos.x) + (pt.y - ray.pos.y) * (pt.y - ray.pos.y));
+				if (d < record)
+				{
+					record = d;
+					closest.x = pt.x;
+					closest.y = pt.y;
+				}
+			}
+			i++;
+		}
+		drawline(ray.pos, closest, data, 0);
+		fov+=fov_precision;
+	}
+}
