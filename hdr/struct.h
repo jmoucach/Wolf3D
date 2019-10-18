@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:19:39 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/14 16:01:56 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/18 14:10:24 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ typedef struct s_ray
 typedef struct s_player
 {
 	double angle;
+	t_d_point plane; // position du joueur/ camera
 	t_d_point pos; // position du joueur/ camera
 	t_point screen_pos;
 	int fov;
 	t_d_point dir;   // direction dans laquelle la camera regarde
-	t_d_point plane; // plan de projection
 	double walkSpeed;
-	double rotSpeed;
+	double rotationSpeed;
 } t_player;
 
 typedef struct s_box

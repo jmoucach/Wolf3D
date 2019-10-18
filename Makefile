@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/10/14 14:38:09 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/10/18 14:23:02 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC= init/main.c\
 	 map/find_edges.c\
 	 map/print_edges_array.c\
 	 raycasting/raycast.c\
+	 raycasting/raycasting2.c\
 	 game/event_loop.c\
 	 edge_list/create_edge_list.c\
 	 edge_list/pushback_edge_list.c\

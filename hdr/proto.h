@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/14 14:37:43 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/18 14:24:47 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void draw_map_box(t_data *data);
 ** Raycast
 */
 
+int map(int value, t_point input, t_point output);
 void raycast(t_data *data);
 t_point cast_ray_to_edge(t_ray ray, t_edge edge);
 
@@ -100,12 +101,6 @@ short find_edge_east(t_data *data, t_edge_list **edges, int x, int y);
 short find_edge_west(t_data *data,  t_edge_list **edges,int x, int y);
 short find_edges(t_data *data);
 
-/*
-** Realloc edge
-*/
-
-void 	realloc_edge(t_data *data);
-// t_edge *realloc_edge(t_edge **edge, int edge_nb);
 
 /*
 ** Create edge list
@@ -137,5 +132,11 @@ short	copy_edges_to_array(t_data *data, t_edge_list *edges);
 */
 
 void 	print_edges_array(t_data *data);
+
+/*
+** Raycasting2
+*/
+
+void raycasting2(t_data *data);
 
 #endif
