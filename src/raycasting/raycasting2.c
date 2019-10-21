@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 13:45:43 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/18 14:50:48 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/21 11:38:39 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,30 +73,60 @@ void raycasting2(t_data *data)
 				hit = 1;
 			}
 		}
+		double wallX;
+		int texNum;
+		int texW;
 		if (side == 0)
 		{
 			perpWallDist = fabs((mapc.x - rayPos.x + (1 - step.x) / 2) / rayDir.x);
+			wallX = rayPos.y + perpWallDist * rayDir.y;
+			texNum = 0;
 		}
 		else
 		{
 			perpWallDist = fabs((mapc.y - rayPos.y + (1 - step.y) / 2) / rayDir.y);
+			wallX = rayPos.x + perpWallDist * rayDir.x;
+			texNum = 1;
+		}
+		// printf("texNum:%d\n", texNum);
+		wallX -= floor(wallX);
+		texW = data->surface[texNum]->w;
+		int texX = wallX * texW;
+		if (side == 0 && rayDir.x > 0)
+		{
+			texX = texW - texX - 1;
+		}
+		if (side == 1 && rayDir.y < 0)
+		{
+			texX = texW - texX - 1;
 		}
 		int lineHeight = abs((int)(SCREEN_HEIGHT / perpWallDist)); // height
 		if (lineHeight < 0)
 		{
 			lineHeight = SCREEN_HEIGHT;
 		}
-		int drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;	 // y1
+		int drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2; // y1
 		if (drawStart < 0)
 			drawStart = 0;
 		int drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2; // y2
 		if (drawEnd >= SCREEN_HEIGHT)
 			drawEnd = SCREEN_HEIGHT - 1;
-		int color = map(perpWallDist, (t_point){0, SCREEN_WIDTH}, (t_point){255, 0});
-		if (side == 1)
-			color /= 2;
-			drawline((t_point){x, 0}, (t_point){x, drawStart}, data, 0x87CEEB);
-		drawline((t_point){x, drawStart}, (t_point){x, drawEnd}, data, color + 256 *color + 256*256 *color);
-			drawline((t_point){x, drawEnd}, (t_point){x, SCREEN_HEIGHT}, data, 0x228B22);
+		int y = drawStart;
+		Uint32 *pix = data->surface[texNum]->pixels;
+		while (y < drawEnd)
+		{
+			int d = y - SCREEN_HEIGHT /2 + lineHeight /2;
+			int texY =((d * data->surface[0]->h) / lineHeight );
+			Uint32 color = pix[(int)(texX + texW * texY)];
+			// printf("color:%d, texX,:%d, texY:%d\n", color, texX, texY);
+			data->pixels[x + y *SCREEN_WIDTH] = color;
+			y++;
+		}
+		// int color = map(perpWallDist, (t_point){0, SCREEN_WIDTH}, (t_point){255, 0});
+		// if (side == 1)
+		// 	color /= 2;
+		drawline((t_point){x, 0}, (t_point){x, drawStart}, data, 0x87CEEB);
+		// drawline((t_point){x, drawStart}, (t_point){x, drawEnd}, data, color + 256 * color + 256 * 256 * color);
+		drawline((t_point){x, drawEnd}, (t_point){x, SCREEN_HEIGHT}, data, 0x228B22);
 	}
 }

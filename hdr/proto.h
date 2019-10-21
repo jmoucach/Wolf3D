@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/18 14:24:47 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/21 09:56:23 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,5 +138,12 @@ void 	print_edges_array(t_data *data);
 */
 
 void raycasting2(t_data *data);
+
+/*
+** Load image
+*/
+
+SDL_Surface *loadImage(char *path);
+short loadMedia(t_data *data);
 
 #endif
