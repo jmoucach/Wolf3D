@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:10:43 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/21 10:03:35 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/22 11:55:03 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
+# define SCREEN_WIDTH 800
+# define SCREEN_HEIGHT 600
 
 # define NORTH 0
 # define SOUTH 1

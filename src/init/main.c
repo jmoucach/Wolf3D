@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:14:06 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/21 09:56:46 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/22 15:10:53 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int main(int ac, char **av)
 		{
 			if (loadMedia(&data))
 			{
-			if (new_map(&data, av[1]))
-			{
-				game_loop(&data);
-				free_map(&data);
-			}
-			close_all(&data);
+				if (new_map(&data, av[1]))
+				{
+					game_loop(&data);
+					free_map(&data);
+				}
+				close_all(&data);
 			}
 		}
 		else

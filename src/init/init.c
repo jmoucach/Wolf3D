@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:37:54 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/18 18:10:14 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/22 15:11:04 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void set_values(t_data *data)
 	data->mapSize.x = 0;
 	data->mapSize.y = 0;
 	data->quit = 0;
+	if (!(data->surface = (SDL_Surface**)malloc(sizeof(SDL_Surface*) * 4)))
+		exit(EXIT_FAILURE);
 }
 
 short init(t_data *data)

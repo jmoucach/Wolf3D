@@ -1,0 +1,13 @@
+Task:
+	Général:
+		☐ Ajuster position de départ.
+	Normaliser le raycaster:
+		☐ Couper le raycaster en plusieurs fonctions / fichers.
+		☐ Reduire le nombre de variables.
+		☐ Déclarer correctement les variables.
+	Bonus:
+		☐ Ajouter un mouvement vertical de camera.
+		☐ Ajouter un saut.
+		☐ Ajouter des objets.
+		☐ Ajouter des portes.
+		☐ Ajouter une minimap

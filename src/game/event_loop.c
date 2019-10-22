@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 17:48:43 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/18 18:32:23 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/22 15:49:21 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,13 @@ void game_loop(t_data *data)
 		// show_player(data);
 		// raycast(data);
 		raycasting2(data);
+		// draw_texture(data, 0, 0, 0);
 		SDL_UpdateTexture(data->texture, NULL, data->pixels, SCREEN_WIDTH * sizeof(Uint32));
 		SDL_RenderClear(data->renderer);
 		SDL_RenderCopy(data->renderer, data->texture, NULL, NULL);
 		SDL_RenderPresent(data->renderer);
 		ft_bzero(data->pixels, (SCREEN_WIDTH * SCREEN_HEIGHT + 1) * 4);
+		// while (1);
 		time = SDL_GetTicks();
 		// break ;
 	}

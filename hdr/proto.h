@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/21 09:56:23 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/22 15:28:03 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ void raycasting2(t_data *data);
 ** Load image
 */
 
+Uint32 get_pixel(SDL_Surface *s, int x, int y);
+void draw_texture(t_data *data, int index, int xoff, int yoff);
 SDL_Surface *loadImage(char *path);
 short loadMedia(t_data *data);
 
