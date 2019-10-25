@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/10/21 09:51:54 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/10/25 10:20:43 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC= init/main.c\
 	 draw/show_player.c\
 	 map/new_map.c\
 	 map/fill_map.c\
+	 map/parsing.c\
 	 map/new_edge.c\
 	 map/find_edges.c\
 	 map/print_edges_array.c\

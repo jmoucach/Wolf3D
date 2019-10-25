@@ -1,6 +1,9 @@
 Task:
 	Général:
-		☐ Ajuster position de départ.
+		✔ Ajuster position de départ. @done (10/25/2019, 9:02:15 AM)
+		✔ Parser les frontieres de la map. @done (10/25/2019, 9:51:46 AM)
+		☐ Ajouter un floor-caster.
+		☐ Ajouter le multi-input.
 	Normaliser le raycaster:
 		☐ Couper le raycaster en plusieurs fonctions / fichers.
 		☐ Reduire le nombre de variables.

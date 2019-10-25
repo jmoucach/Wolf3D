@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init->c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmoucach <jmoucach@student->42->fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:37:54 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/22 15:11:04 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/22 15:11:04 by jmoucach         ###   ########->fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,34 @@ short create_renderer_texture_and_pixels(t_data *data)
 		return (0);
 	}
 	else if (!(data->texture = SDL_CreateTexture(data->renderer,
-		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, SCREEN_WIDTH,
-		SCREEN_HEIGHT)))
+												 SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, SCREEN_WIDTH,
+												 SCREEN_HEIGHT)))
 	{
 		ft_putstr_fd("Failed to create texture! Error:", 2);
 		ft_putendl_fd(SDL_GetError(), 2);
 		return (0);
 	}
-	else if (!(data->pixels = (Uint32 *)malloc(sizeof(Uint32) * SCREEN_WIDTH
-		* SCREEN_HEIGHT + 1)))
+	else if (!(data->pixels = (Uint32 *)malloc(sizeof(Uint32) * SCREEN_WIDTH * SCREEN_HEIGHT + 1)))
 	{
 		ft_putendl_fd("Failed to allocate pixels", 2);
 		return (0);
 	}
 	return (1);
+}
+
+void set_raycast_values(t_raycast *values, t_player player, int x)
+{
+	values->camera = 2 * x / (double)SCREEN_WIDTH - 1;
+	values->ray.pos.x = player.pos.x;
+	values->ray.pos.y = player.pos.y;
+	values->ray.dir.x = player.dir.x + player.plane.x * values->camera;
+	values->ray.dir.y = player.dir.y + player.plane.y * values->camera;
+	values->m_pos.x = (int)values->ray.pos.x;
+	values->m_pos.y = (int)values->ray.pos.y;
+	values->deltadist.x = sqrt(1 + (values->ray.dir.y * values->ray.dir.y) / (values->ray.dir.x * values->ray.dir.x));
+	values->deltadist.y = sqrt(1 + (values->ray.dir.x * values->ray.dir.x) / (values->ray.dir.y * values->ray.dir.y));
+	values->hit = 0;
+	values->side = 0;
 }
 
 void set_values(t_data *data)
@@ -58,7 +72,7 @@ void set_values(t_data *data)
 	data->mapSize.x = 0;
 	data->mapSize.y = 0;
 	data->quit = 0;
-	if (!(data->surface = (SDL_Surface**)malloc(sizeof(SDL_Surface*) * 4)))
+	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 4)))
 		exit(EXIT_FAILURE);
 }
 

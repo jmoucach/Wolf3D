@@ -1,0 +1,102 @@
+/*
+
+	t_raycast values;
+	t_player player;
+set_raycast_values(&values, player, x);
+for (int x = 0; x < SCREEN_WIDTH; x++) // for all x on the screen resolution
+	{
+		// setting step and sidedist based on rayDir values
+		if (values.ray.dir.x < 0)
+		{
+			values.step.x = -1;
+			values.sidedist.x = (values.ray.pos.x - values.m_pos.x) * values.deltadist.x;
+		}
+		else
+		{
+			values.step.x = 1;
+			values.sidedist.x = (values.m_pos.x + 1.0 - values.ray.pos.x) * values.deltadist.x;
+		}
+
+		if (values.ray.dir.y < 0)
+		{
+			values.step.y = -1;
+			values.sidedist.y = (values.ray.pos.y - values.m_pos.y) * values.deltadist.y;
+		}
+		else
+		{
+			values.step.y = 1;
+			values.sidedist.y = (values.m_pos.y + 1.0 - values.ray.pos.y) * values.deltadist.y;
+		}
+
+		// check if the casted ray has hit an object
+		while (values.hit == 0) // calculate ray until it hits an object
+		{
+			if (values.sidedist.x < values.sidedist.y)
+			{
+				values.sidedist.x += values.deltadist.x;
+				values.m_pos.x += values.step.x;
+				values.side = 0;
+			}
+			else
+			{
+				values.sidedist.y += values.deltadist.y;
+				values.m_pos.y += values.step.y;
+				values.side = 1;
+			}
+			if (data->map[values.m_pos.x][values.m_pos.y].value > 0) // the ray has hit a non-zero block at position mapc.x, mapc.y
+			{
+				values.hit = 1;
+			}
+		}
+		double wallX;
+		int texNum;
+		int texW;
+		int texH;
+		if (values.side == 0)
+		{
+			values.wallDist = fabs((values.m_pos.x - values.ray.pos.x + (1 - values.step.x) / 2) / values.ray.dir.x);
+			if (values.ray.dir.x > 0)
+				texNum = 0;
+			else
+				texNum = 1;
+			wallX = values.ray.pos.y + values.wallDist * values.ray.dir.y;
+		}
+		else
+		{
+			values.wallDist = fabs((values.m_pos.y - values.ray.pos.y + (1 - values.step.y) / 2) / values.ray.dir.y);
+			if (values.ray.dir.y > 0)
+				texNum = 2;
+			else
+				texNum = 3;
+			wallX = values.ray.pos.x + values.wallDist * values.ray.dir.x;
+		}
+		wallX -= floor((wallX));
+		texW = data->surface[texNum]->w;
+		texH = data->surface[texNum]->h;
+		int texX = wallX * texW;
+		int lineHeight = abs((int)(SCREEN_HEIGHT / values.wallDist)); // height
+		printf("line HEIght:%d\n", lineHeight);
+		if (lineHeight < 0)
+		{
+			lineHeight = SCREEN_HEIGHT;
+		}
+		int drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2; // y1
+		if (drawStart < 0)
+			drawStart = 0;
+		int drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2; // y2
+		if (drawEnd >= SCREEN_HEIGHT)
+			drawEnd = SCREEN_HEIGHT - 1;
+
+		int y = drawStart;
+		while (y <= drawEnd)
+		{
+			int texY = (y * 2 - SCREEN_HEIGHT + lineHeight) * (texH / 2) / lineHeight;
+			Uint32 color = get_pixel(data->surface[texNum], texX, texY);
+			if (values.side == 1)
+				color = (color >> 1) & 8355711;
+			data->pixels[x + y * SCREEN_WIDTH] = color;
+			y++;
+		}
+		drawline((t_point){x, 0}, (t_point){x, drawStart}, data, 0x87CEEB);
+		drawline((t_point){x, drawEnd}, (t_point){x, SCREEN_HEIGHT}, data, 0x228B22);
+	}*/

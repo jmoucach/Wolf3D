@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/22 15:28:03 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/25 12:06:47 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 short create_renderer_texture_and_pixels(t_data *data);
 short	init(t_data *data);
 void	set_values(t_data *data);
+void set_raycast_values(t_raycast *value, t_player player, int x);
 
 /*
 ** Draw
@@ -54,7 +55,6 @@ short	new_map(t_data *data, char *title);
 
 void	print_map(t_data data);
 short	fill_map(t_data *data, char *str);
-short	parse_map(char *str);
 
 /*
 ** Draw map box
@@ -137,6 +137,9 @@ void 	print_edges_array(t_data *data);
 ** Raycasting2
 */
 
+void get_texturing_values(t_raycast *values, t_data *data);
+void set_dist_and_step(t_raycast *values);
+void hit_wall(t_raycast *values, t_data *data);
 void raycasting2(t_data *data);
 
 /*
@@ -147,5 +150,13 @@ Uint32 get_pixel(SDL_Surface *s, int x, int y);
 void draw_texture(t_data *data, int index, int xoff, int yoff);
 SDL_Surface *loadImage(char *path);
 short loadMedia(t_data *data);
+
+/*
+** Parsing
+*/
+
+short parse_boudaries(char *str, t_data *data);
+short	parse_map(t_data *data, char *str);
+short parse_char(char *str);
 
 #endif
