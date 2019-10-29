@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/25 12:06:47 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:24:07 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ void 	print_edges_array(t_data *data);
 ** Raycasting2
 */
 
+void give_draw_values(t_raycast *values);
 void get_texturing_values(t_raycast *values, t_data *data);
 void set_dist_and_step(t_raycast *values);
 void hit_wall(t_raycast *values, t_data *data);
@@ -158,5 +159,11 @@ short loadMedia(t_data *data);
 short parse_boudaries(char *str, t_data *data);
 short	parse_map(t_data *data, char *str);
 short parse_char(char *str);
+
+/*
+** Floor caster
+*/
+
+void floorcaster(t_data *data, t_raycast *r, int x);
 
 #endif

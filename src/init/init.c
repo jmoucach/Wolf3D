@@ -72,7 +72,7 @@ void set_values(t_data *data)
 	data->mapSize.x = 0;
 	data->mapSize.y = 0;
 	data->quit = 0;
-	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 4)))
+	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 6)))
 		exit(EXIT_FAILURE);
 }
 

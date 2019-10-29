@@ -5,9 +5,9 @@ Task:
 		☐ Ajouter un floor-caster.
 		☐ Ajouter le multi-input.
 	Normaliser le raycaster:
-		☐ Couper le raycaster en plusieurs fonctions / fichers.
-		☐ Reduire le nombre de variables.
-		☐ Déclarer correctement les variables.
+		✔ Couper le raycaster en plusieurs fonctions / fichers. @done (10/29/2019, 1:45:15 PM)
+		✔ Reduire le nombre de variables. @done (10/29/2019, 1:45:14 PM)
+		✔ Déclarer correctement les variables. @done (10/29/2019, 1:45:19 PM)
 	Bonus:
 		☐ Ajouter un mouvement vertical de camera.
 		☐ Ajouter un saut.

@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 09:42:14 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/22 15:46:32 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:36:28 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,20 @@ short loadMedia(t_data *data)
 	data->surface[0] = loadImage("pics/redbrick.bmp");
 	if (!data->surface[0])
 		return (0);
-	data->surface[1] = loadImage("pics/eagle.bmp");
+	data->surface[1] = loadImage("pics/bluestone.bmp");
 	if (!data->surface[1])
 		return (0);
-	data->surface[2] = loadImage("pics/wood.bmp");
+	data->surface[2] = loadImage("pics/greystone.bmp");
 	if (!data->surface[2])
 		return (0);
 	data->surface[3] = loadImage("pics/mossy.bmp");
 	if (!data->surface[3])
+		return (0);
+	data->surface[4] = loadImage("pics/tile2.bmp");
+	if (!data->surface[4])
+		return (0);
+		data->surface[5] = loadImage("pics/wood.bmp");
+	if (!data->surface[5])
 		return (0);
 	return (1);
 }
