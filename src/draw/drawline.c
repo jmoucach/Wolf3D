@@ -6,13 +6,14 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:27:49 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/02 11:16:12 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/01 17:42:30 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/Wolf3d.h"
 
-void setup_param(t_point pt_one, t_point pt_two, t_line_param *line_param)
+void				setup_param(t_point pt_one, t_point pt_two,
+	t_line_param *line_param)
 {
 	line_param->diff.x = ft_abs(pt_two.x - pt_one.x);
 	line_param->diff.y = ft_abs(pt_two.y - pt_one.y);
@@ -21,11 +22,12 @@ void setup_param(t_point pt_one, t_point pt_two, t_line_param *line_param)
 	line_param->inc.y = (pt_one.y < pt_two.y ? 1 : -1);
 }
 
-void	drawline(t_point pt_one, t_point pt_two, t_data *data, int colour)
+void				drawline(t_point pt_one, t_point pt_two,
+	t_data *data, int colour)
 {
-	t_point pt;
-	t_line_param line_param;
-	Uint32 *pix;
+	t_point			pt;
+	t_line_param	line_param;
+	Uint32			*pix;
 
 	pix = data->pixels;
 	setup_param(pt_one, pt_two, &line_param);

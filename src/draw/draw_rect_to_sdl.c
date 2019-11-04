@@ -6,14 +6,14 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 11:16:31 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/01 19:18:57 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/01 16:46:37 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/Wolf3d.h"
 
 void	draw_rect_to_sdl(t_point pt_one, t_point pt_two,
-						 t_data *data, int colour)
+			t_data *data, int colour)
 {
 	t_point start_point;
 	t_point end_point;
@@ -25,6 +25,6 @@ void	draw_rect_to_sdl(t_point pt_one, t_point pt_two,
 	while (start_point.y++ < end_point.y)
 	{
 		drawline(start_point, (t_point){end_point.x, start_point.y},
-					   data, colour);
+			data, colour);
 	}
 }

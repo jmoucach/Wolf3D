@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Test_SDL.c                                         :+:      :+:    :+:   */
+/*   Test_SDL_main.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 16:17:47 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/09/18 16:17:50 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/01 17:53:41 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ short init(SDL_Window **win, SDL_Surface **surf)
 	return (success);
 }
 
-short LoadMedia(SDL_Surface **LoadedMedia)
+short loadmedia(SDL_Surface **LoadedMedia)
 {
 	short success;
 	success = 1;
@@ -85,7 +85,7 @@ int main(int ac, char **av)
 	{
 		if (init(&window, &screenSurface))
 		{
-			if (LoadMedia(&LoadedSurface))
+			if (loadmedia(&LoadedSurface))
 			{
 				while (!quit)
 				{

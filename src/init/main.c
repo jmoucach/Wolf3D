@@ -6,23 +6,23 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:14:06 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/22 15:10:53 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/01 18:02:18 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/Wolf3d.h"
 
-void free_map(t_data *data)
+void	free_map(t_data *data)
 {
 	int i;
 
-	i = data->mapSize.y;
+	i = data->msize.y;
 	while (--i >= 0)
 		free(data->map[i]);
 	free(data->map);
 }
 
-void close_all(t_data *data)
+void	close_all(t_data *data)
 {
 	if (data->pixels)
 		free(data->pixels);
@@ -35,7 +35,7 @@ void close_all(t_data *data)
 	SDL_Quit();
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_data data;
 
@@ -44,7 +44,7 @@ int main(int ac, char **av)
 		set_values(&data);
 		if (init(&data))
 		{
-			if (loadMedia(&data))
+			if (loadmedia(&data))
 			{
 				if (new_map(&data, av[1]))
 				{

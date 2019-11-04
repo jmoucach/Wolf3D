@@ -6,16 +6,16 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 12:11:26 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/14 12:37:39 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/01 16:47:10 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/Wolf3d.h"
 
-short	copy_edges_to_array(t_data *data, t_edge_list *edges)
+short			copy_edges_to_array(t_data *data, t_edge_list *edges)
 {
-	int i;
-	t_edge_list *first;
+	int			i;
+	t_edge_list	*first;
 
 	i = 0;
 	first = edges;

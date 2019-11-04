@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Test_SDL.c                                         :+:      :+:    :+:   */
+/*   Test_SDL_multiple_image.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 16:17:47 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/09/18 16:17:50 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/01 17:53:42 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ SDL_Surface *LoadSurface(char *path)
 	return (LoadedSurface);
 }
 
-short LoadMedia(SDL_Surface *KeyPressSurfaces[])
+short loadmedia(SDL_Surface *KeyPressSurfaces[])
 {
 	short success;
 
@@ -105,7 +105,7 @@ int main(int ac, char **av)
 	{
 		if (init(&window, &screenSurface))
 		{
-			LoadMedia(LoadedSurfaces);
+			loadmedia(LoadedSurfaces);
 			CurrentSurface = LoadedSurfaces[KEY_PRESS_SURFACE_DEFAULT];
 			while (!quit)
 			{

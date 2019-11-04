@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:19:39 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/29 17:13:19 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/04 22:39:18 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ typedef struct s_player
 	double angle;
 	t_d_point plane; // position du joueur/ camera
 	t_d_point pos; // position du joueur/ camera
-	t_point screen_pos;
-	int fov;
 	t_d_point dir;   // direction dans laquelle la camera regarde
 	double walkSpeed;
-	double rotationSpeed;
+	double sprintspeed;
+	double rspeed;
 } t_player;
 
 typedef struct s_raycast
@@ -61,7 +60,7 @@ typedef struct s_raycast
 	t_d_point deltadist;
 	t_point step;
 	int hit;
-	double wallX;
+	double wall;
 	int side;
 	int texH;
 	int texW;
@@ -73,6 +72,15 @@ typedef struct s_raycast
 	int drawend;
 	double wallDist;
 }				t_raycast;
+
+typedef struct s_floorcast
+{
+	t_d_point floor;
+	t_d_point currentfloor;
+	t_point floorTex;
+	double currentdist;
+	double weight;
+}				t_floorcast;
 
 typedef struct s_box
 {
@@ -100,12 +108,15 @@ typedef struct s_data
 	SDL_Texture *texture;
 	SDL_Surface **surface;
 	Uint32 *pixels;
+	double time;
+	double ftime;
 	t_edge *edges;
 	int edge_nb;
 	SDL_Event event;
-	t_player player;
+	t_player p;
 	t_box **map;
-	t_point mapSize;
+	t_point msize;
+	short toggle_minimap;
 	int box_length;
 	short quit;
 } t_data;

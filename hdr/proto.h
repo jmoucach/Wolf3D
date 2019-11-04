@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/10/29 14:24:07 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:54:39 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,13 @@ short	fill_map(t_data *data, char *str);
 ** Draw map box
 */
 
-void draw_map_box(t_data *data);
-
-/*
-** Raycast
-*/
-
-int map(int value, t_point input, t_point output);
-void raycast(t_data *data);
-t_point cast_ray_to_edge(t_ray ray, t_edge edge);
+void draw_minimap(t_data *data);
 
 /*
 ** Event loop
 */
 
+void handle_input(t_data *data, const Uint8 *state);
 void	game_loop(t_data *data);
 
 /*
@@ -106,7 +99,7 @@ short find_edges(t_data *data);
 ** Create edge list
 */
 
-t_edge_list *create_edge_list(int x1, int y1, int x2, int y2, int id);
+t_edge_list		*create_edge_list(t_point pt1, t_point pt2, int id);
 
 /*
 ** Push back edge list
@@ -134,23 +127,22 @@ short	copy_edges_to_array(t_data *data, t_edge_list *edges);
 void 	print_edges_array(t_data *data);
 
 /*
-** Raycasting2
+** Raycasting
 */
 
 void give_draw_values(t_raycast *values);
 void get_texturing_values(t_raycast *values, t_data *data);
 void set_dist_and_step(t_raycast *values);
 void hit_wall(t_raycast *values, t_data *data);
-void raycasting2(t_data *data);
+void raycasting(t_data *data);
 
 /*
 ** Load image
 */
 
 Uint32 get_pixel(SDL_Surface *s, int x, int y);
-void draw_texture(t_data *data, int index, int xoff, int yoff);
-SDL_Surface *loadImage(char *path);
-short loadMedia(t_data *data);
+SDL_Surface *loadimage(char *path);
+short loadmedia(t_data *data);
 
 /*
 ** Parsing
@@ -164,6 +156,16 @@ short parse_char(char *str);
 ** Floor caster
 */
 
+void			floor_side(t_floorcast *f, t_raycast *r);
 void floorcaster(t_data *data, t_raycast *r, int x);
+
+/*
+** movement
+*/
+
+void		strafe(t_data *data, int strafe);
+void		walk(t_data *data, int walkdir);
+void		sprint(t_data *data, int sprintdir);
+void		rotate(t_data *data, int rotdir);
 
 #endif
