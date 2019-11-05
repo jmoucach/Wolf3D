@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:57:11 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/04 18:56:35 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:28:11 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void			set_raycast_values(t_raycast *values, t_player player, int x)
 
 void			set_values(t_data *data)
 {
-	data->box_length = 6;
 	data->p.angle = 0 * M_PI / 180;
 	data->p.dir.x = 1;
 	data->p.dir.y = 0;
@@ -66,8 +65,6 @@ void			set_values(t_data *data)
 	data->p.rspeed = 2;
 	data->p.sprintspeed = 6;
 	data->p.walkSpeed = 3;
-	data->edge_nb = 0;
-	data->edges = NULL;
 	data->texture = NULL;
 	data->renderer = NULL;
 	data->window = NULL;

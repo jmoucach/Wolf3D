@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 18:22:58 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/04 18:35:39 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:25:33 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void			hit_wall(t_raycast *r, t_data *data)
 			r->m_pos.y += r->step.y;
 			r->side = 1;
 		}
-		if (data->map[r->m_pos.x][r->m_pos.y].value > 0)
+		if (data->map[r->m_pos.x][r->m_pos.y] > 0)
 		{
 			r->hit = 1;
 		}

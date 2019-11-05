@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/05 07:15:07 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:32:48 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,58 +73,7 @@ void	game_loop(t_data *data);
 ** Show player
 */
 
-void	show_player(t_data *data, int length);
-
-/*
-** New edge
-*/
-
-short new_edge_north(t_data *data, t_edge_list **edges, int x, int y);
-short new_edge_south(t_data *data, t_edge_list **edges, int x, int y);
-short new_edge_east(t_data *data, t_edge_list **edges, int x, int y);
-short new_edge_west(t_data *data, t_edge_list **edges, int x, int y);
-
-/*
-** Find edges
-*/
-
-short find_edge_north(t_data *data, t_edge_list **edges, int x, int y);
-short find_edge_south(t_data *data, t_edge_list **edges, int x, int y);
-short find_edge_east(t_data *data, t_edge_list **edges, int x, int y);
-short find_edge_west(t_data *data,  t_edge_list **edges,int x, int y);
-short find_edges(t_data *data);
-
-
-/*
-** Create edge list
-*/
-
-t_edge_list		*create_edge_list(t_point pt1, t_point pt2, int id);
-
-/*
-** Push back edge list
-*/
-
-void print_edge_list(t_edge_list *edges);
-void	pushback_edge(t_edge_list **edges, t_edge_list *edge);
-
-/*
-** Delete edge list
-*/
-
-void	delete_edge_list(t_edge_list **edges);
-
-/*
-** Copy edges to array
-*/
-
-short	copy_edges_to_array(t_data *data, t_edge_list *edges);
-
-/*
-** Print edges array
-*/
-
-void 	print_edges_array(t_data *data);
+void	show_player(t_data *data, t_point length);
 
 /*
 ** Raycasting

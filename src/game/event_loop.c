@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 18:07:10 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/04 22:52:16 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:28:50 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,16 @@ void			game_loop(t_data *data)
 {
 	const Uint8	*state;
 	int			width;
-
+	double		time;
 	width = SCREEN_WIDTH;
 	SDL_SetRelativeMouseMode(SDL_TRUE);
 	while (!data->quit)
 	{
-		data->time = SDL_GetTicks();
+		time = SDL_GetTicks();
 		raycasting(data);
 		if (data->toggle_minimap)
 			draw_minimap(data);
-		data->ftime = (SDL_GetTicks() - data->time) / 1000;
+		data->ftime = (SDL_GetTicks() - time) / 1000;
 		handle_mouse(data);
 		SDL_PumpEvents();
 		state = SDL_GetKeyboardState(NULL);

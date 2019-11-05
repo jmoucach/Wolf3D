@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 17:46:23 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/01 19:13:37 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:26:07 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ short			allocate_map(t_data *data)
 	int			i;
 
 	i = 0;
-	if (!(data->map = (t_box**)malloc(sizeof(t_box*) * data->msize.y)))
+	if (!(data->map = (int**)malloc(sizeof(int*) * data->msize.y)))
 		return (0);
 	while (i < data->msize.y)
 	{
-		if (!(data->map[i] = (t_box*)malloc(sizeof(t_box) * data->msize.x)))
+		if (!(data->map[i] = (int*)malloc(sizeof(int) * data->msize.x)))
 		{
 			while (i-- >= 0)
 				free(data->map[i]);
@@ -113,8 +113,6 @@ short			new_map(t_data *data, char *title)
 	if (!(fill_map(data, str)))
 		return (0);
 	free(str);
-	if (!(find_edges(data)))
-		return (0);
 	print_map(*data);
 	printf("SIZE:x:%d, y:%d\n", data->msize.x, data->msize.y);
 	return (1);

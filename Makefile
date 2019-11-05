@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/11/04 18:24:03 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/11/05 07:19:27 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,22 +39,15 @@ SRC= init/main.c\
 	 map/new_map.c\
 	 map/fill_map.c\
 	 map/parsing.c\
-	 map/new_edge.c\
-	 map/find_edges.c\
-	 map/print_edges_array.c\
 	 raycasting/raycasting.c\
 	 raycasting/floorcaster.c\
 	 game/event_loop.c\
 	 game/movement.c\
-	 edge_list/create_edge_list.c\
-	 edge_list/pushback_edge_list.c\
-	 edge_list/delete_edge_list.c\
-	 edge_list/copy_edges_to_array.c\
 	 image/load_image.c
 SRCS= $(addprefix $(SRC_DIR),$(SRC))
 OBJ_DIR= obj/
 OBJ= $(SRC:.c=.o)
-OBJ_SUBDIRS= init draw map raycasting game edge_list image
+OBJ_SUBDIRS= init draw map raycasting game  image
 OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
 LIB= ./SDL2/SDL2\

@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:19:39 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/04 22:39:18 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:28:39 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,25 +82,6 @@ typedef struct s_floorcast
 	double weight;
 }				t_floorcast;
 
-typedef struct s_box
-{
-	int value;
-	int edges[4];
-} t_box;
-
-typedef struct s_edge
-{
-	t_point start;
-	t_point end;
-} t_edge;
-
-typedef struct s_edge_list
-{
-	int id;
-	t_edge edge;
-	struct s_edge_list *next;
-}	t_edge_list;
-
 typedef struct s_data
 {
 	SDL_Window *window;
@@ -108,16 +89,11 @@ typedef struct s_data
 	SDL_Texture *texture;
 	SDL_Surface **surface;
 	Uint32 *pixels;
-	double time;
 	double ftime;
-	t_edge *edges;
-	int edge_nb;
-	SDL_Event event;
 	t_player p;
-	t_box **map;
+	int **map;
 	t_point msize;
 	short toggle_minimap;
-	int box_length;
 	short quit;
 } t_data;
 

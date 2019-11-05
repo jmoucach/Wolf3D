@@ -4,6 +4,7 @@ Task:
 		✔ Parser les frontieres de la map. @done (10/25/2019, 9:51:46 AM)
 		✔ Ajouter un floor-caster. @done (10/30/2019, 5:54:02 PM)
 		✔ Ajouter le multi-input. @done (10/30/2019, 7:12:29 PM)
+		✔ Retirer les fonctions inutiles. @done (11/5/2019, 7:21:15 AM)
 	Normaliser le raycaster:
 		✔ Couper le raycaster en plusieurs fonctions / fichers. @done (10/29/2019, 1:45:15 PM)
 		✔ Reduire le nombre de variables. @done (10/29/2019, 1:45:14 PM)

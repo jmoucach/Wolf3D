@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 16:14:45 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/04 19:31:15 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:25:33 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void		walk(t_data *data, int walkdir)
 	dx = walkdir * data->p.dir.x * data->p.walkSpeed * data->ftime;
 	dy = walkdir * data->p.dir.y * data->p.walkSpeed * data->ftime;
 	if (data->map[(int)(data->p.pos.x + dx)]
-		[(int)data->p.pos.y].value == 0)
+		[(int)data->p.pos.y] == 0)
 		data->p.pos.x += dx;
 	if (data->map[(int)(data->p.pos.x)]
-		[(int)(data->p.pos.y + dy)].value == 0)
+		[(int)(data->p.pos.y + dy)] == 0)
 		data->p.pos.y += dy;
 }
 
@@ -53,10 +53,10 @@ void		sprint(t_data *data, int sprintdir)
 	dx = sprintdir * data->p.dir.x * data->p.sprintspeed * data->ftime;
 	dy = sprintdir * data->p.dir.y * data->p.sprintspeed * data->ftime;
 	if (data->map[(int)(data->p.pos.x + dx)]
-		[(int)data->p.pos.y].value == 0)
+		[(int)data->p.pos.y] == 0)
 		data->p.pos.x += dx;
 	if (data->map[(int)(data->p.pos.x)]
-		[(int)(data->p.pos.y + dy)].value == 0)
+		[(int)(data->p.pos.y + dy)] == 0)
 		data->p.pos.y += dy;
 }
 
@@ -68,9 +68,9 @@ void		strafe(t_data *data, int strafe)
 	dx = strafe * data->p.dir.y * data->p.walkSpeed * data->ftime / 2;
 	dy = -strafe * data->p.dir.x * data->p.walkSpeed * data->ftime / 2;
 	if (data->map[(int)(data->p.pos.x + dx)]
-		[(int)data->p.pos.y].value == 0)
+		[(int)data->p.pos.y] == 0)
 		data->p.pos.x += dx;
 	if (data->map[(int)(data->p.pos.x)]
-		[(int)(data->p.pos.y + dy)].value == 0)
+		[(int)(data->p.pos.y + dy)] == 0)
 		data->p.pos.y += dy;
 }
