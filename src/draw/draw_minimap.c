@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 19:15:41 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/04 22:03:23 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:16:22 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		draw_minimap(t_data *data)
 	int		colour;
 	int		length;
 
-	length = data->box_length;
+	length = (0.2 * SCREEN_WIDTH) / data->msize.x;
 	y = 0;
 	while (y < data->msize.y)
 	{
@@ -37,7 +37,7 @@ void		draw_minimap(t_data *data)
 		}
 		y++;
 	}
-	show_player(data);
+	show_player(data, length);
 }
 
 /*

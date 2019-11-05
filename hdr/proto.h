@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/04 18:54:39 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:15:07 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	game_loop(t_data *data);
 ** Show player
 */
 
-void	show_player(t_data *data);
+void	show_player(t_data *data, int length);
 
 /*
 ** New edge

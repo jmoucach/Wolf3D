@@ -6,21 +6,21 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 11:55:03 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/04 18:35:35 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/05 07:14:28 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/Wolf3d.h"
 
-void			show_player(t_data *data)
+void			show_player(t_data *data, int length)
 {
 	Uint32		*pix;
 	t_point		pt;
 	t_d_point	dir;
 	int			l;
 
-	pt.x = data->p.pos.y * data->box_length;
-	pt.y = data->p.pos.x * data->box_length;
+	pt.x = data->p.pos.y * length;
+	pt.y = data->p.pos.x * length;
 	dir.y = data->p.dir.x * 10;
 	dir.x = data->p.dir.y * 10;
 	pix = data->pixels;

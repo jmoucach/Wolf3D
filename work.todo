@@ -10,6 +10,7 @@ Task:
 		✔ Déclarer correctement les variables. @done (10/29/2019, 1:45:19 PM)
 	Bonus:
 		☐ Ajouter une sensibilité de mouvement a la souris.
+		✔ Ajouter une minimap adaptative. @done (11/5/2019, 7:16:30 AM)
 		✘ Ajouter un mouvement vertical de camera. @cancelled (11/4/2019, 10:52:33 PM)
 		✘ Ajouter un saut. @cancelled (11/4/2019, 10:52:35 PM)
 		✘ Ajouter des objets. @cancelled (11/4/2019, 10:52:35 PM)
