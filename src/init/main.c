@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:14:06 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/08 18:18:36 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 18:28:32 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ void	close_all(t_data *data)
 		i++;
 	}
 	if (data->surface)
-		free
-		(data->surface);
+		free(data->surface);
 	SDL_Quit();
 }
 

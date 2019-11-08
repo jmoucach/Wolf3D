@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/11/08 16:49:37 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/11/08 18:31:42 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
 LIB= -L/Users/jmoucach/.brew/lib -lSDL2 \
 	 -L libft -lft
+LIBFT= libft.a
 INCLUDES=	hdr/wolf3d.h\
 			hdr/proto.h\
 			hdr/struct.h
@@ -62,14 +63,16 @@ INCLUDES=	hdr/wolf3d.h\
 
 all: $(SUBDIRS) $(NAME)
 
-$(NAME): $(OBJS)
-	@ echo "$(BLUE)Creating libft$(WHITE)"
-	@ make -C libft
+$(NAME): $(LIBFT) $(OBJS)
+	
 	@ echo "$(GREEN)Libft created$(WHITE)"
 	@ echo "$(YELLOW)Creating $@ executable$(WHITE)"
 	@ $(CC) -o $@ $(CFLAGS) $(OBJS) $(LIB) $(FRAMEWORK)
 	@echo "$(GREEN)$@ executable created$(WHITE)"
 
+$(LIBFT): FORCE
+	@ echo "$(BLUE)Creating libft$(WHITE)"
+	@ make -C libft
 $(SUBDIRS):
 	@ mkdir -p $(SUBDIRS)
 
@@ -95,5 +98,7 @@ fclean: clean
 	@ rm -rf $(NAME)
 
 re: fclean all
+
+FORCE:
 
 .PHONY: all re fclean clean

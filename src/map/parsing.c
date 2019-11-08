@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 09:15:24 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/08 16:29:17 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 18:28:14 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,23 @@ short			parse_boudaries(char *str, t_data *data)
 	y = 0;
 	while (y < data->msize.y)
 	{
-		if (str[2 * (y * data->msize.x)] == '0'
-			|| str[2 * (y * data->msize.x + data->msize.x - 1)] == '0')
+		if (str[2 * (y * data->msize.x)] != '1'
+			|| str[2 * (y * data->msize.x + data->msize.x - 1)] != '1')
+		{
+			ft_putendl_fd("Incomplete Boundaries", 2);
 			return (0);
+		}
 		y++;
 	}
-	x = 0;
-	while (x < data->msize.x)
+	x = -1;
+	while (++x < data->msize.x)
 	{
-		if (str[2 * x] == '0'
-			|| str[2 * (x + (data->msize.y - 1) * data->msize.x)] == '0')
+		if (str[2 * x] != '1'
+			|| str[2 * (x + (data->msize.y - 1) * data->msize.x)] != '1')
+		{
+			ft_putendl_fd("Incomplete Boundaries", 2);
 			return (0);
-		x++;
+		}
 	}
 	return (1);
 }
@@ -71,7 +76,7 @@ short			parse_map(t_data *data, char *str)
 		return (1);
 	else
 	{
-		ft_putendl_fd("Incomplete Boundaries", 2);
+		ft_putendl_fd("Invalid map", 2);
 		return (0);
 	}
 }
