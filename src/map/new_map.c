@@ -6,11 +6,11 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 17:46:23 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/05 07:26:07 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 18:04:18 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../hdr/Wolf3d.h"
+#include "../../hdr/wolf3d.h"
 
 short			count_lines_and_col(t_data *data, char *str)
 {
@@ -114,6 +114,5 @@ short			new_map(t_data *data, char *title)
 		return (0);
 	free(str);
 	print_map(*data);
-	printf("SIZE:x:%d, y:%d\n", data->msize.x, data->msize.y);
 	return (1);
 }

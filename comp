@@ -35,16 +35,16 @@ void floorcaster(t_data *data, t_raycast *r, int x)
 	while (y < SCREEN_HEIGHT)
 	{
 		f.currentdist = (double)SCREEN_HEIGHT / (double)(2 * y - SCREEN_HEIGHT);
-		f.weight = f.currentdist / r->wallDist;
+		f.weight = f.currentdist / r->walldist;
 		f.currentfloor.x = f.weight * f.floor.x
 			+ (1 - f.weight) * data->player.pos.x;
 		f.currentfloor.y = f.weight * f.floor.y
 			+ (1 - f.weight) * data->player.pos.y;
-		f.floorTex.x = (int)(f.currentfloor.x * 64) % 64;
-		f.floorTex.y = (int)(f.currentfloor.y * 64) % 64;
-		color = (get_pixel(data->surface[4], f.floorTex.x, f.floorTex.y) >> 1);
+		f.floortex.x = (int)(f.currentfloor.x * 64) % 64;
+		f.floortex.y = (int)(f.currentfloor.y * 64) % 64;
+		color = (get_pixel(data->surface[4], f.floortex.x, f.floortex.y) >> 1);
 		data->pixels[x + y * SCREEN_WIDTH] = color;
-		color = get_pixel(data->surface[5], f.floorTex.x, f.floorTex.y);
+		color = get_pixel(data->surface[5], f.floortex.x, f.floortex.y);
 		data->pixels[x + (SCREEN_HEIGHT - y) * SCREEN_WIDTH] = color;
 		y++;
 	}

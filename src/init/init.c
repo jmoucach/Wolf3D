@@ -6,11 +6,11 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:57:11 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/05 07:28:11 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 16:29:17 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../hdr/Wolf3d.h"
+#include "../../hdr/wolf3d.h"
 
 short			create_renderer_texture_and_pixels(t_data *data)
 {
@@ -64,13 +64,15 @@ void			set_values(t_data *data)
 	data->p.plane.y = -0.66;
 	data->p.rspeed = 2;
 	data->p.sprintspeed = 6;
-	data->p.walkSpeed = 3;
+	data->p.walkspeed = 3;
 	data->texture = NULL;
 	data->renderer = NULL;
 	data->window = NULL;
 	data->msize.x = 0;
 	data->msize.y = 0;
 	data->quit = 0;
+	data->sensitivity = 0.5;
+	data->yaw = 0;
 	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 6)))
 		exit(EXIT_FAILURE);
 }

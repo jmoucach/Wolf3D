@@ -6,11 +6,11 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 11:55:03 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/05 07:32:58 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 16:29:17 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../hdr/Wolf3d.h"
+#include "../../hdr/wolf3d.h"
 
 void			show_player(t_data *data, t_point length)
 {

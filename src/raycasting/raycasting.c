@@ -6,11 +6,11 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 18:22:58 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/05 07:25:33 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 16:29:17 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../hdr/Wolf3d.h"
+#include "../../hdr/wolf3d.h"
 
 void			set_dist_and_step(t_raycast *r)
 {
@@ -40,29 +40,29 @@ void			get_texturing_values(t_raycast *r, t_data *data)
 {
 	if (r->side == 0)
 	{
-		r->wallDist = fabs((r->m_pos.x - r->ray.pos.x + (1 - r->step.x) / 2)
+		r->walldist = fabs((r->m_pos.x - r->ray.pos.x + (1 - r->step.x) / 2)
 			/ r->ray.dir.x);
 		if (r->ray.dir.x > 0)
-			r->texNum = 0;
+			r->texnum = 0;
 		else
-			r->texNum = 1;
-		r->wall = r->ray.pos.y + r->wallDist * r->ray.dir.y;
+			r->texnum = 1;
+		r->wall = r->ray.pos.y + r->walldist * r->ray.dir.y;
 	}
 	else
 	{
-		r->wallDist = fabs((r->m_pos.y - r->ray.pos.y + (1 - r->step.y) / 2)
+		r->walldist = fabs((r->m_pos.y - r->ray.pos.y + (1 - r->step.y) / 2)
 			/ r->ray.dir.y);
 		if (r->ray.dir.y > 0)
-			r->texNum = 2;
+			r->texnum = 2;
 		else
-			r->texNum = 3;
-		r->wall = r->ray.pos.x + r->wallDist * r->ray.dir.x;
+			r->texnum = 3;
+		r->wall = r->ray.pos.x + r->walldist * r->ray.dir.x;
 	}
 	r->wall -= floor(r->wall);
-	r->texW = data->surface[r->texNum]->w;
-	r->texH = data->surface[r->texNum]->h;
-	r->tex.x = r->wall * r->texH;
-	r->lineHeight = abs((int)(SCREEN_HEIGHT / r->wallDist));
+	r->texw = data->surface[r->texnum]->w;
+	r->texh = data->surface[r->texnum]->h;
+	r->tex.x = r->wall * r->texh;
+	r->lineheight = abs((int)(SCREEN_HEIGHT / r->walldist));
 }
 
 void			hit_wall(t_raycast *r, t_data *data)
@@ -88,14 +88,14 @@ void			hit_wall(t_raycast *r, t_data *data)
 	}
 }
 
-void			give_draw_values(t_raycast *r)
+void			give_draw_values(t_raycast *r, t_data *data)
 {
-	if (r->lineHeight < 0)
-		r->lineHeight = SCREEN_HEIGHT;
-	r->drawstart = -r->lineHeight / 2 + SCREEN_HEIGHT / 2;
+	if (r->lineheight < 0)
+		r->lineheight = SCREEN_HEIGHT;
+	r->drawstart = -r->lineheight / 2 + (SCREEN_HEIGHT + data->yaw) / 2;
 	if (r->drawstart < 0)
 		r->drawstart = 0;
-	r->drawend = r->lineHeight / 2 + SCREEN_HEIGHT / 2;
+	r->drawend = r->lineheight / 2 + (SCREEN_HEIGHT + data->yaw) / 2;
 	if (r->drawend >= SCREEN_HEIGHT)
 		r->drawend = SCREEN_HEIGHT - 1;
 	if (r->drawend < 0)
@@ -116,13 +116,13 @@ void			raycasting(t_data *data)
 		set_dist_and_step(&r);
 		hit_wall(&r, data);
 		get_texturing_values(&r, data);
-		give_draw_values(&r);
+		give_draw_values(&r, data);
 		pt.y = r.drawstart;
 		while (pt.y <= r.drawend)
 		{
-			r.tex.y = (pt.y * 2 - SCREEN_HEIGHT + r.lineHeight)
-				* (r.texH / 2) / (r.lineHeight + 1);
-			r.color = get_pixel(data->surface[r.texNum],
+			r.tex.y = (pt.y * 2 - (SCREEN_HEIGHT + data->yaw) + r.lineheight)
+				* (r.texh / 2) / (r.lineheight + 1);
+			r.color = get_pixel(data->surface[r.texnum],
 				r.tex.x, r.tex.y);
 			data->pixels[pt.x + pt.y * SCREEN_WIDTH] = r.color;
 			pt.y++;

@@ -6,24 +6,30 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:14:06 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/01 18:02:18 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 18:18:36 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../hdr/Wolf3d.h"
+#include "../../hdr/wolf3d.h"
 
 void	free_map(t_data *data)
 {
 	int i;
 
-	i = data->msize.y;
-	while (--i >= 0)
+	i = data->msize.y - 1;
+	while (i >= 0)
+	{
 		free(data->map[i]);
+		i--;
+	}
 	free(data->map);
 }
 
 void	close_all(t_data *data)
 {
+	int i;
+
+	i = 0;
 	if (data->pixels)
 		free(data->pixels);
 	if (data->texture)
@@ -32,6 +38,15 @@ void	close_all(t_data *data)
 		SDL_DestroyRenderer(data->renderer);
 	if (data->window)
 		SDL_DestroyWindow(data->window);
+	while (i < 6)
+	{
+		if (data->surface[i])
+			SDL_FreeSurface(data->surface[i]);
+		i++;
+	}
+	if (data->surface)
+		free
+		(data->surface);
 	SDL_Quit();
 }
 

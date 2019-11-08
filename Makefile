@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/11/05 07:19:27 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/11/08 16:49:37 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ MAGENTA= \033[35m
 ################################################################################
 NAME= Wolf3d
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror -g 
+CFLAGS= -Wall -Wextra -Werror -g -I/Users/jmoucach/.brew/include/SDL2
 SRC_DIR= src/
 SRC= init/main.c\
 	 init/init.c\
@@ -50,9 +50,9 @@ OBJ= $(SRC:.c=.o)
 OBJ_SUBDIRS= init draw map raycasting game  image
 OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
-LIB= ./SDL2/SDL2\
+LIB= -L/Users/jmoucach/.brew/lib -lSDL2 \
 	 -L libft -lft
-INCLUDES=	hdr/Wolf3d.h\
+INCLUDES=	hdr/wolf3d.h\
 			hdr/proto.h\
 			hdr/struct.h
 

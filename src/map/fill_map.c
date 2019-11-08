@@ -6,11 +6,11 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 14:51:49 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/05 07:25:33 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 16:29:17 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../hdr/Wolf3d.h"
+#include "../../hdr/wolf3d.h"
 
 void			print_map(t_data data)
 {
@@ -23,10 +23,11 @@ void			print_map(t_data data)
 		j = 0;
 		while (j < data.msize.x)
 		{
-			printf("%d, ", data.map[i][j]);
+			ft_putnbr(data.map[i][j]);
+			ft_putstr(", ");
 			j++;
 		}
-		printf("\n");
+		ft_putchar('\n');
 		i++;
 	}
 }

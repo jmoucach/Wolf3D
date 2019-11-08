@@ -6,11 +6,11 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 11:16:31 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/01 16:46:37 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/08 16:29:17 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../hdr/Wolf3d.h"
+#include "../../hdr/wolf3d.h"
 
 void	draw_rect_to_sdl(t_point pt_one, t_point pt_two,
 			t_data *data, int colour)
