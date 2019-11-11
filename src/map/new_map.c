@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 17:46:23 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/11 10:53:31 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 14:00:23 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ short			new_map(t_data *data, char *title)
 	fd = open(title, O_RDONLY);
 	if (!(str = read_map(fd)))
 	{
-		ft_putendl_fd("Couldn't read map",2);
+		ft_putendl_fd("Couldn't read map", 2);
 		return (0);
 	}
 	if (!count_lines_and_col(data, str))
 	{
-		ft_putendl_fd("Map is not rectangular",2);
+		ft_putendl_fd("Map is not rectangular", 2);
 		return (0);
 	}
 	str = ft_replace(str, '\n', ',');

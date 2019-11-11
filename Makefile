@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/11/11 11:04:28 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/11/11 17:56:15 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ MAGENTA= \033[35m
 ################################################################################
 NAME= Wolf3d
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror -g -I/Users/jmoucach/.brew/include/SDL2
+CFLAGS= -Wall -Wextra -Werror -g `sdl2-config --cflags` 
 SRC_DIR= src/
 SRC= init/main.c\
 	 init/init.c\
@@ -50,7 +50,7 @@ OBJ= $(SRC:.c=.o)
 OBJ_SUBDIRS= init draw map raycasting game  image
 OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
-LIB= -L/Users/jmoucach/.brew/lib -lSDL2 \
+LIB= `sdl2-config --libs` \
 	 -L libft -lft
 LIBFT= libft.a
 INCLUDES=	hdr/wolf3d.h\
@@ -75,7 +75,7 @@ $(SUBDIRS):
 	@ mkdir -p $(SUBDIRS)
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(INCLUDES) Makefile
-	@ $(CC) -o $@ -c $< $(CFLAGS)
+	@ $(CC) -o $@ -c $< $(CFLAGS) $(SDL2_CFLAGS)
 	@ echo "$(GREEN)[✔]$(WHITE)$@"
 
 clean:
@@ -94,6 +94,9 @@ fclean: clean
 	@ echo "$(GREEN)Obj directory deleted$(WHITE)"
 	@ echo "$(GREEN)Executable deleted$(WHITE)"
 	@ rm -rf $(NAME)
+
+instalSDL:
+	brew install SDL2
 
 re: fclean all
 
