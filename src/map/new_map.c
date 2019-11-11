@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 17:46:23 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/08 18:04:18 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 10:22:21 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 short			count_lines_and_col(t_data *data, char *str)
 {
-	int			i;
-	int			tmp;
-	int			col;
+	t_parse		p;
 
-	i = -1;
-	while (++i < (int)ft_strlen(str))
+	p.i = -1;
+	while (++p.i < (int)ft_strlen(str))
 	{
-		col = data->msize.x;
+		p.col = data->msize.x;
 		data->msize.x = 0;
-		tmp = 0;
-		while (str[i] && str[i] != '\n')
+		p.tmp = 0;
+		while (str[p.i] && str[p.i] != '\n')
 		{
-			if (tmp == 1 && str[i] == ',')
-				tmp = 0;
-			if (tmp == 0 && str[i] != ',')
+			if (p.tmp == 1 && str[p.i] != ',')
+				return (0);
+			if (p.tmp == 1 && str[p.i] == ',')
+				p.tmp = 0;
+			if (p.tmp == 0 && str[p.i] != ',')
 				data->msize.x++;
-			if (tmp == 0 && str[i] != ',')
-				tmp = 1;
-			i++;
+			if (p.tmp == 0 && str[p.i] != ',')
+				p.tmp = 1;
+			p.i++;
 		}
-		if (data->msize.x != col && col != 0)
+		if (data->msize.x != p.col && p.col != 0)
 			return (0);
 		data->msize.y++;
 	}
@@ -103,9 +103,15 @@ short			new_map(t_data *data, char *title)
 
 	fd = open(title, O_RDONLY);
 	if (!(str = read_map(fd)))
+	{
+		ft_putendl_fd("Couldn't read map",2);
 		return (0);
+	}
 	if (!count_lines_and_col(data, str))
+	{
+		ft_putendl_fd("Map is not rectangular",2);
 		return (0);
+	}
 	str = ft_replace(str, '\n', ',');
 	close(fd);
 	if (!allocate_map(data))

@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:14:06 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/08 18:28:32 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 10:02:44 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int		main(int ac, char **av)
 					game_loop(&data);
 					free_map(&data);
 				}
-				close_all(&data);
 			}
+			close_all(&data);
 		}
 		else
 		{

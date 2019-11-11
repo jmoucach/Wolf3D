@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:19:39 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/08 17:58:09 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 10:21:44 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ typedef struct		s_point
 	int				x;
 	int				y;
 }					t_point;
+
+typedef struct		s_parse
+{
+	int				i;
+	int				col;
+	int				tmp;
+}					t_parse;
 
 typedef struct		s_d_point
 {

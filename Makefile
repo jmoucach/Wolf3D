@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/11/08 18:31:42 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/11/11 09:35:47 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,6 @@ INCLUDES=	hdr/wolf3d.h\
 all: $(SUBDIRS) $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	
-	@ echo "$(GREEN)Libft created$(WHITE)"
 	@ echo "$(YELLOW)Creating $@ executable$(WHITE)"
 	@ $(CC) -o $@ $(CFLAGS) $(OBJS) $(LIB) $(FRAMEWORK)
 	@echo "$(GREEN)$@ executable created$(WHITE)"
@@ -73,6 +71,8 @@ $(NAME): $(LIBFT) $(OBJS)
 $(LIBFT): FORCE
 	@ echo "$(BLUE)Creating libft$(WHITE)"
 	@ make -C libft
+	@ echo "$(GREEN)Libft created$(WHITE)"
+
 $(SUBDIRS):
 	@ mkdir -p $(SUBDIRS)
 
@@ -81,7 +81,7 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(INCLUDES) Makefile
 	@ echo "$(GREEN)[✔]$(WHITE)$@"
 
 clean:
-	@ echo "$(YELLOW)Deleting objects$(WHITE)"
+	@ echo "$(YELLOW)Deleting objectps$(WHITE)"
 	@ for i in $(OBJ); do \
 		echo "$(RED)- Deleting $$i$(WHITE)"; \
 	done;

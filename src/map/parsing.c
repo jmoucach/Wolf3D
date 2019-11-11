@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 09:15:24 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/08 18:28:14 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 10:17:59 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,5 @@ short			parse_map(t_data *data, char *str)
 	if (parse_char(str) && parse_boudaries(str, data))
 		return (1);
 	else
-	{
-		ft_putendl_fd("Invalid map", 2);
 		return (0);
-	}
 }
