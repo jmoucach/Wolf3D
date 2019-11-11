@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 17:46:23 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/11 10:22:21 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 10:53:31 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,5 @@ short			new_map(t_data *data, char *title)
 	if (!(fill_map(data, str)))
 		return (0);
 	free(str);
-	print_map(*data);
 	return (1);
 }

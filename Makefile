@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/11/11 10:43:09 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/11/11 11:04:28 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,9 +69,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	@echo "$(GREEN)$@ executable created$(WHITE)"
 
 $(LIBFT): FORCE
-	@ echo "$(BLUE)Creating libft$(WHITE)"
-	@ make -C libft
-	@ echo "$(GREEN)Libft created$(WHITE)"
+	@ make -C libft 1>/dev/null
 
 $(SUBDIRS):
 	@ mkdir -p $(SUBDIRS)
@@ -81,7 +79,7 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(INCLUDES) Makefile
 	@ echo "$(GREEN)[✔]$(WHITE)$@"
 
 clean:
-	@ echo "$(YELLOW)Deleting objectps$(WHITE)"
+	@ echo "$(YELLOW)Deleting objects$(WHITE)"
 	@ for i in $(OBJ); do \
 		echo "$(RED)- Deleting $$i$(WHITE)"; \
 	done;

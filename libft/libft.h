@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:07:59 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/09/30 18:59:19 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 10:52:31 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,13 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 t_list				*ft_lstnew(const void *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void(*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void(*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *news);
+void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lt, t_list *(*f)(t_list *elem));
 char				*ft_strrev(char *str);
-double				ft_abs(double nb);
+int					ft_sqrt(int nb);
+int					ft_abs(int nb);
 char				*ft_replace(char *str, char find, char replace);
+
 
 #endif
