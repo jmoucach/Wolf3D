@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/08 16:29:17 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:46:45 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 */
 
 short			create_renderer_texture_and_pixels(t_data *data);
+void			nullify_surfaces(t_data *data);
 short			init(t_data *data);
 void			set_values(t_data *data);
 void			set_raycast_values(t_raycast *value, t_player player, int x);
@@ -40,6 +41,8 @@ void			drawline(t_point pt_one, t_point pt_two,
 */
 
 void			close_all(t_data *data);
+int				name_parser(char *file_name);
+void			free_map(t_data *data);
 
 /*
 ** New map
@@ -100,6 +103,7 @@ short			loadmedia(t_data *data);
 ** Parsing
 */
 
+short			count_lines_and_col(t_data *data, char *str);
 short			parse_boudaries(char *str, t_data *data);
 short			parse_map(t_data *data, char *str);
 short			parse_char(char *str);

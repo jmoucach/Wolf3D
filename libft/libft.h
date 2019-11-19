@@ -87,5 +87,4 @@ int					ft_sqrt(int nb);
 int					ft_abs(int nb);
 char				*ft_replace(char *str, char find, char replace);
 
-
 #endif

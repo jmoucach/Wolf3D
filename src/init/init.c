@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:57:11 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/11 18:01:45 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:46:01 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void			nullify_surfaces(t_data *data)
 	while (++i < 6)
 		data->surface[i] = NULL;
 }
-
 
 short			create_renderer_texture_and_pixels(t_data *data)
 {

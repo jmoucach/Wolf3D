@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 17:46:23 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/11 14:00:23 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:52:16 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ short			new_map(t_data *data, char *title)
 	int			fd;
 	char		*str;
 
-	fd = open(title, O_RDONLY);
+	fd = open(title, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK);
 	if (!(str = read_map(fd)))
 	{
 		ft_putendl_fd("Couldn't read map", 2);

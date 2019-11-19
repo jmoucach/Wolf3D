@@ -6,7 +6,7 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 09:42:14 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/11 17:38:25 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:48:40 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ SDL_Surface		*loadimage(char *path)
 	if (!loadedsurface)
 	{
 		ft_putstr_fd("Couldn't load image:", 2);
-		ft_putstr_fd(path, 2);
-		ft_putstr_fd("Error :", 2);
+		ft_putendl_fd(path, 2);
+		ft_putstr_fd("Error: ", 2);
 		ft_putendl_fd(SDL_GetError(), 2);
 		return (NULL);
 	}

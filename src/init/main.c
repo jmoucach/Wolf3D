@@ -6,11 +6,24 @@
 /*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:14:06 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/11/11 10:02:44 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:53:02 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/wolf3d.h"
+
+int		name_parser(char *file_name)
+{
+	int	i;
+
+	i = ft_strlen(file_name);
+	if (!ft_strequ((file_name + i - 5), ".wolf"))
+	{
+		ft_putendl("Invalid map_name");
+		return (0);
+	}
+	return (1);
+}
 
 void	free_map(t_data *data)
 {
@@ -60,7 +73,7 @@ int		main(int ac, char **av)
 		{
 			if (loadmedia(&data))
 			{
-				if (new_map(&data, av[1]))
+				if (name_parser(av[1]) && new_map(&data, av[1]))
 				{
 					game_loop(&data);
 					free_map(&data);
