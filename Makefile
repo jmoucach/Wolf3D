@@ -6,7 +6,7 @@
 #    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 16:03:44 by jmoucach          #+#    #+#              #
-#    Updated: 2019/11/11 17:56:15 by jmoucach         ###   ########.fr        #
+#    Updated: 2019/11/26 14:29:30 by jmoucach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,6 @@ OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
 LIB= `sdl2-config --libs` \
 	 -L libft -lft
-LIBFT= libft.a
 INCLUDES=	hdr/wolf3d.h\
 			hdr/proto.h\
 			hdr/struct.h
@@ -63,13 +62,11 @@ INCLUDES=	hdr/wolf3d.h\
 
 all: $(SUBDIRS) $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJS)
+	@ make -C libft
 	@ echo "$(YELLOW)Creating $@ executable$(WHITE)"
 	@ $(CC) -o $@ $(CFLAGS) $(OBJS) $(LIB) $(FRAMEWORK)
 	@echo "$(GREEN)$@ executable created$(WHITE)"
-
-$(LIBFT): FORCE
-	@ make -C libft 1>/dev/null
 
 $(SUBDIRS):
 	@ mkdir -p $(SUBDIRS)
